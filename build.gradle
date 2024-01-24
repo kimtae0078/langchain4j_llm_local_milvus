@@ -1,0 +1,72 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+
+    // https://mvnrepository.com/artifact/dev.langchain4j/langchain4j-core
+    implementation group: 'dev.langchain4j', name: 'langchain4j-core', version: '0.25.0'
+
+    // https://mvnrepository.com/artifact/dev.langchain4j/langchain4j
+    implementation group: 'dev.langchain4j', name: 'langchain4j', version: '0.25.0'
+
+    // https://mvnrepository.com/artifact/dev.langchain4j/langchain4j-embeddings-all-minilm-l6-v2-q
+    implementation group: 'dev.langchain4j', name: 'langchain4j-embeddings-all-minilm-l6-v2-q', version: '0.25.0'
+
+    // https://mvnrepository.com/artifact/io.milvus/milvus-sdk-java
+    implementation group: 'io.milvus', name: 'milvus-sdk-java', version: '2.3.1'
+
+    // https://mvnrepository.com/artifact/dev.langchain4j/langchain4j-open-ai
+    implementation group: 'dev.langchain4j', name: 'langchain4j-open-ai', version: '0.25.0'
+
+    // https://mvnrepository.com/artifact/dev.langchain4j/langchain4j-milvus
+    implementation group: 'dev.langchain4j', name: 'langchain4j-milvus', version: '0.25.0'
+
+    // https://mvnrepository.com/artifact/io.netty/netty-codec
+    implementation group: 'io.netty', name: 'netty-codec', version: '4.1.100.Final'
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.9.2'
+
+    // https://mvnrepository.com/artifact/org.assertj/assertj-core
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
+
+    // https://mvnrepository.com/artifact/org.testcontainers/testcontainers
+    testImplementation group: 'org.testcontainers', name: 'testcontainers', version: '1.19.0'
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.3'
+
+    // https://mvnrepository.com/artifact/io.minio/minio
+    implementation group: 'io.minio', name: 'minio', version: '8.5.2'
+
+
+}
+
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
